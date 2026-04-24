@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://use.typekit.net">
+    <link rel="stylesheet" href="https://use.typekit.net/uix3gbn.css">
+
+    <title>Creative Planning - System Status</title>
+
+    <style>
+        :root
+        {
+            --primary-text-color: #165D7D;
+            --info-text-color: #1E1E1E;
+            --update-text-color: rgba(0, 0, 0, 0.2);
+            font-family: "new-atten", sans-serif;
+            color: var(--info-text-color);
+        }
+
+        div
+        {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        main
+        {
+            display: grid;
+            grid-template-areas: ". logo text .";
+            grid-template-columns: auto 188px min-content auto;
+            align-items: middle;
+
+            img { grid-area: logo; }
+
+            hgroup
+            {
+                grid-area: text;
+                align-items: center;
+                padding-top: 5%;
+                padding-left: 5%;
+
+                h1
+                {
+                    color: var(--primary-text-color);
+                    font-size: 40px;
+                    margin: 0;
+                    margin-top: 0.25lh;
+                }
+
+                p
+                {
+                    font-size: 32px;
+                    margin-bottom: 1lh;
+                    margin: 0;
+                    white-space: nowrap;
+
+                    &:nth-of-type(1) {  margin-top: 0.25lh; }
+                }
+            }
+
+
+        }
+
+        footer
+        {
+            display: grid;
+            align-items: center;
+            grid-template-areas: ". vectorleft text vectorright .";
+            grid-template-columns: auto 320px min-content 320px auto;
+
+            p
+            {
+                grid-area: text;
+                display: inline-block;
+                color: var(--update-text-color);
+                font-size: 24px;
+                white-space: nowrap;
+                padding-left: 1ch;
+                padding-right: 1ch;
+            }
+
+            hr
+            {
+                color: var(--update-text-color);
+                width: 100%;
+                height: 0px;
+                border-radius: 5px;
+                border: solid var(--update-text-color) 2.5px;
+
+                &:nth-of-type(1) { grid-area: vectorleft; }
+
+                &:nth-of-type(2) { grid-area: vectorright; }
+            }
+        }
+
+    </style>
+
+    <script>
+        addEventListener("load", initialize);
+
+        function initialize() {
+            document.querySelector("time").innerText = Temporal.Now.plainTimeISO().toString();
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <main>
+            <img src="./blank.png" />
+            <hgroup>
+                <h1>System Status</h1>
+                <p>We are aware of an issue affecting system availability.</p>
+                <p>Our team is actively working to resolve this.</p>
+                <p>Please check back shortly for updates.</p>
+            </hgroup>
+        </main>
+        <footer>
+            <hr />
+            <p>Last updated <time></time></p>
+            <hr />
+        </footer>
+    </div>
+</body>
+
+</html>
