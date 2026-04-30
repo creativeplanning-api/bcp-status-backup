@@ -31,8 +31,7 @@
         {
             display: grid;
             grid-template-areas: ". logo text .";
-            grid-template-columns: auto 188px min-content auto;
-            align-items: middle;
+            grid-template-columns: auto 188px 80ch auto;
 
             img
             {
@@ -62,7 +61,7 @@
                     font-size: 32px;
                     margin-bottom: 1lh;
                     margin: 0;
-                    white-space: nowrap;
+                    /* white-space: nowrap; */
 
                     &:nth-of-type(1) {  margin-top: 0.25lh; }
                 }
@@ -75,8 +74,9 @@
         {
             display: grid;
             align-items: center;
-            grid-template-areas: ". vectorleft text vectorright .";
-            grid-template-columns: auto 320px min-content 320px auto;
+            grid-template-areas: "vectorleft text vectorright";
+            grid-template-columns: auto min-content auto;
+            width: 100%;
 
             p
             {
@@ -109,7 +109,13 @@
         addEventListener("load", initialize);
 
         function initialize() {
-            document.querySelector("time").innerText = Temporal.Now.plainTimeISO().toString();
+            const dateTimeFormat = new Intl.DateTimeFormat("en-US", {});
+            const parts = dateTimeFormat.formatToParts(Temporal.Now.instant());
+            const hour = parts.find(s => s.type === "hour").value;
+            const minute = parts.find(s => s.type === "minute").value;
+            const dayPeriod = parts.find(s => s.type === "dayPeriod").value;
+
+            document.querySelector("time").innerText = `${hour}:${minute} ${dayPeriod}`;
         }
     </script>
 </head>
