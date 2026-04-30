@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <link rel="preconnect" href="https://use.typekit.net" />
     <link rel="stylesheet" href="https://use.typekit.net/uix3gbn.css" />
-    <link rel="icon" href="./icon.png" />
+    <link rel="icon" href="./logo.svg" />
 
     <title>Creative Planning - System Status</title>
 
@@ -34,7 +34,13 @@
             grid-template-columns: auto 188px min-content auto;
             align-items: middle;
 
-            img { grid-area: logo; }
+            img
+            {
+                grid-area: logo;
+                position: relative;
+                right: 50px;
+                bottom: 15px;
+            }
 
             hgroup
             {
@@ -111,7 +117,7 @@
 <body>
     <div>
         <main>
-            <img src="./blank.png" />
+            <img src="./logo.svg" />
             <hgroup>
                 <h1>System Status</h1>
                 <p>We are aware of an issue affecting system availability.</p>
