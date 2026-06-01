@@ -70,54 +70,7 @@
 
         }
 
-        footer
-        {
-            display: grid;
-            align-items: center;
-            grid-template-areas: "vectorleft text vectorright";
-            grid-template-columns: auto min-content auto;
-            width: 100%;
-
-            p
-            {
-                grid-area: text;
-                display: inline-block;
-                color: var(--update-text-color);
-                font-size: 24px;
-                white-space: nowrap;
-                padding-left: 1ch;
-                padding-right: 1ch;
-            }
-
-            hr
-            {
-                color: var(--update-text-color);
-                width: 100%;
-                height: 0px;
-                border-radius: 5px;
-                border: solid var(--update-text-color) 2.5px;
-
-                &:nth-of-type(1) { grid-area: vectorleft; }
-
-                &:nth-of-type(2) { grid-area: vectorright; }
-            }
-        }
-
     </style>
-
-    <script>
-        addEventListener("load", initialize);
-
-        function initialize() {
-            const dateTimeFormat = new Intl.DateTimeFormat("en-US", {});
-            const parts = dateTimeFormat.formatToParts(Temporal.Now.instant());
-            const hour = parts.find(s => s.type === "hour").value;
-            const minute = parts.find(s => s.type === "minute").value;
-            const dayPeriod = parts.find(s => s.type === "dayPeriod").value;
-
-            document.querySelector("time").innerText = `${hour}:${minute} ${dayPeriod}`;
-        }
-    </script>
 </head>
 
 <body>
@@ -131,11 +84,6 @@
                 <p>Please check back shortly for updates.</p>
             </hgroup>
         </main>
-        <footer>
-            <hr />
-            <p>Last updated <time></time></p>
-            <hr />
-        </footer>
     </div>
 </body>
 
